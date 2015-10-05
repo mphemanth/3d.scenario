@@ -17,11 +17,12 @@ var OBJECTS={
 		dummy.scale.x = dummy.scale.y = dummy.scale.z = scale;
 		dummy.updateMatrix();
 		var ob3d={'geometry':dummy};
+		console.log('filling',modelName );
 		//load object to global object database & pass on offset angle 
 		GLOBAL.models[modelName]=ob3d;
 		GLOBAL.models[modelName]['depth']=depth;
 
-		if (GLOBAL.modelName=='ship#2')
+		if (GLOBAL.modelName=='ship#1')
 			{
 			 console.log('loading comepleted');
 			  GLOBAL.modelsReady=1;
@@ -35,10 +36,10 @@ var OBJECTS={
 
 	/* enabling multiple instances of objects */
 	preload3DModels:function(){
-	
+	console.log('loading models!');
 	this.loadColladaModel('torpedo',0.1*GLOBAL.objScale,0,0,'torpedo');
 	this.loadColladaModel('stealth',0.08*GLOBAL.objScale,10*GLOBAL.objScale,0,'ship#1');
-	this.loadColladaModel('stealth',0.08*GLOBAL.objScale,10*GLOBAL.objScale,0,'ship#2');
+
 	}	
 }
 	

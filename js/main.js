@@ -2,9 +2,10 @@
 function MainLoop()
 {
 	requestAnimationFrame( MainLoop );
+	TWEEN.update();
 	draw_compass(SCENARIO.ms_Camera.rotation.z-Math.PI/2);
 
-	if (GLOBAL.sim_status!=2 && GLOBAL.sim_status!=4){SCENARIO.Update();}
+	SCENARIO.Update();
 }
 
 $( function() {
@@ -35,5 +36,15 @@ $( function() {
 //	});
 	init_compass();
 	MainLoop();
+	window.setTimeout(createTargets,2000);
+
 	
 } );
+
+function createTargets()
+{
+TARGET.create(0,{'vtype':0,'x':10,'y':10,'z':10,'course':0,'geometry':''});
+TARGET.create(1,{'vtype':0,'x':100,'y':800,'z':10,'course':0,'geometry':''});
+TARGET.create(2,{'vtype':2,'x':100,'y':80,'z':10,'course':0,'geometry':''});
+
+}
